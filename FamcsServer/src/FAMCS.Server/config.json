@@ -1,0 +1,10 @@
+{
+  "AppSettings": {
+    "SiteTitle": "FAMCS.Server"
+  },
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-FAMCS.Server-7fd7e975-32c0-4313-92bb-aabc168ed667;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+  }
+}
