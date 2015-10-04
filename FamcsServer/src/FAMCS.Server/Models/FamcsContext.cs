@@ -17,21 +17,10 @@ namespace FAMCS.Server.Models
             Database.EnsureCreated();
 
         }
-        //public DbSet<Project> Projects { get; set; }
-        //public DbSet<ProjectType> ProjectTypes { get; set; }
-        //public DbSet<ProjectVersion> ProjectVersions { get; set; }
-        //public DbSet<Report> Reports { get; set; }
-        //public DbSet<ReportGroup> ReportGroup { get; set; }
-        /*private static bool _created;*/
-        /*public ReporterAppContext()
-        {
-            // Create the database and schema if it doesn't exist
-            if (!_created)
-            {
-                Database.AsRelational().ApplyMigrations();
-                _created = true;
-            }
-        }*/
+        public DbSet<Faculty> Faculties { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<Specialty> Specialties { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -52,7 +41,6 @@ namespace FAMCS.Server.Models
             {
                 user.ToTable("Users");
                 user.Key(t => t.Id);
-                user.Property(t => t.JoinDate).Required(true);
             });
             builder.Entity<Role>().ToTable("Roles");
             builder.Entity<IdentityRoleClaim<Int64>>().ToTable("RoleClaims");
@@ -60,53 +48,42 @@ namespace FAMCS.Server.Models
             builder.Entity<IdentityUserLogin<Int64>>().ToTable("UserLogins");
             builder.Entity<IdentityUserClaim<Int64>>().ToTable("UserClaims");
 
-            //builder.Entity<Project>(project =>
-            //{
-            //    project.ToTable("Projects");
-            //    project.Key(t => t.Id);
-            //    project.Property(t => t.LatestVersionId).Required(false);
-            //    project.Property(t => t.Name).MaxLength(30);
-            //    project.Property(t => t.CreateDate).HasDefaultValueSql("GETDATE()");
-            //    project.Index(t => new { t.UserId, t.Name }).Name("Name_UserId_Uniq").Unique(true);
-            //});
+            builder.Entity<Faculty>(faculty => 
+            {
 
-            //builder.Entity<ProjectVersion>(projectVersion =>
-            //{
-            //    projectVersion.ToTable("ProjectVersions");
-            //    projectVersion.Key(t => t.Id);
-            //});
+            });
 
-            //builder.Entity<ProjectType>(projectVersion =>
-            //{
-            //    projectVersion.ToTable("ProjectTypes");
-            //    projectVersion.Key(t => t.Id);
-            //    projectVersion.Property(t => t.Name).MaxLength(30);
-            //    projectVersion.Index(t => t.Name).Name("Name_Uniq").Unique(true);
-            //});
+            builder.Entity<Department>(departament =>
+            {
 
-            //builder.Entity<Report>(report =>
-            //{
-            //    //report.Ignore(report => report)
-            //    report.ToTable("Reports");
-            //    report.Key(t => t.Id);
-            //});
+            });
 
-            //builder.Entity<ReportGroup>(reportGroup =>
-            //{
-            //    reportGroup.ToTable("ReportGroups");
-            //    reportGroup.Key(t => t.Id);
-            //});
+            builder.Entity<Specialty>(specialty =>
+            {
+
+            });
+
+            builder.Entity<Group>(group =>
+            {
+
+            });
         }
         protected void ConfigureDataBasereferences(ModelBuilder builder)
         {
-            //User 1 - N Project
-            //builder.Entity<User>().Collection(t => t.Projects).InverseReference(t => t.User).ForeignKey(t => t.UserId).PrincipalKey(t => t.Id);
+            //Faculty 1 - N Departments
+            builder.Entity<Faculty>().Collection(t => t.Departments).InverseReference(t => t.Faculty).ForeignKey(t => t.FacultyId).PrincipalKey(t => t.Id);
 
-            ////Project 1 - N ProjectVersion
-            //builder.Entity<Project>().Collection(t => t.ProjectVersions).InverseReference(t => t.Project).ForeignKey(t => t.ProjectId).PrincipalKey(t => t.Id);
+            //Faculty 1 - N Specialties
+            builder.Entity<Faculty>().Collection(t => t.Specialties).InverseReference(t => t.Faculty).ForeignKey(t => t.FacultyId).PrincipalKey(t => t.Id);
 
-            ////Project 1 - 1 ProjectType
-            //builder.Entity<Project>().Reference(t => t.ProjectType).InverseCollection(t => t.Projects).ForeignKey(t => t.ProjectTypeId).PrincipalKey(t => t.Id);
+            //Specialty 1 - N Groups
+            builder.Entity<Specialty>().Collection(t => t.Groups).InverseReference(t => t.Specialty).ForeignKey(t => t.SpecialtyId).PrincipalKey(t => t.Id);
+
+            //Department 1 - N Groups
+            builder.Entity<Department>().Collection(t => t.Groups).InverseReference(t => t.Department).ForeignKey(t => t.SpecialtyId).PrincipalKey(t => t.Id);
+            
+            //Department 1 - 1 User
+            builder.Entity<Department>().Collection(t => t.Professors).InverseReference(t => t.Department).ForeignKey(t => t.DepartamentId).PrincipalKey(t => t.Id);
         }
     }
 }

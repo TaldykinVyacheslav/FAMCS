@@ -16,6 +16,7 @@ using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
 using FAMCS.Server.Models;
 using Microsoft.Dnx.Runtime;
+using Microsoft.AspNet.Authorization;
 
 namespace FAMCS.Server
 {
@@ -49,6 +50,7 @@ namespace FAMCS.Server
             //services.AddScoped<IStore<Report>, BaseStore<Report>>();
             //services.AddScoped<IStore<ReportGroup>, BaseStore<ReportGroup>>();
             //services.AddScoped<IStore<ProjectVersion>, BaseStore<ProjectVersion>>();
+            
             services.AddIdentity<User, Role>
             (options => { })
             .AddEntityFrameworkStores<FamcsContext, long>()
@@ -74,7 +76,15 @@ namespace FAMCS.Server
             //services.AddSingleton<ProjectManager>();
             //services.AddSingleton<ProjectTypeManager>();
 
+            
+
             services.AddMvc(options => { });
+
+            services.ConfigureCookieAuthentication(options =>
+            {
+                options.LoginPath = new PathString("/Result/NotAuth");
+                options.AccessDeniedPath = new PathString("/Result/AccessDenied");
+            });
         }
 
         public void Configure(IApplicationBuilder app)
@@ -88,10 +98,7 @@ namespace FAMCS.Server
                     name: "default",
                     template: "{controller}/{action}/{id?}",
                     defaults: new { controller = "Users", action = "Get2" });
-                // Uncomment the following line to add a route for porting Web API 2 controllers.
-                // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
             });
-            //DataBaseInit(app);
 
         }
     }

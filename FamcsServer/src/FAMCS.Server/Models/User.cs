@@ -10,8 +10,10 @@ namespace FAMCS.Server.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime JoinDate { get; set; }
-        public string ImageUrl { get; set; }
-        
+
+        public long? DepartamentId { get; set; }
+        public virtual Department Department { get; set; }
+        public long? GroupID { get; set;}
+        public virtual Group Group { get; set; }
     }
 }
