@@ -88,7 +88,43 @@ namespace Famcs.Controllers.Api.V1
                         path = "api/v1/user/get/42",
                         method = "GET",
                         roles = "all",
-                    }
+                    },
+                    GetByGroupId = new
+                    {
+                        path = "api/v1/user/GetByGroupId/42",
+                        method = "GET",
+                        roles = "all",
+                    },
+                    GetByDepartmentId = new
+                    {
+                        path = "api/v1/user/GetByDepartmentId/42",
+                        method = "GET",
+                        roles = "all",
+                    },
+                    GetProfessors = new
+                    {
+                        path = "api/v1/user/GetProfessors",
+                        method = "GET",
+                        roles = "all",
+                    },
+                    GetStudents = new
+                    {
+                        path = "api/v1/user/GetStudents",
+                        method = "GET",
+                        roles = "all",
+                    },
+                    AssignProfessorToDepartment = new
+                    {
+                        path = "api/v1/user/AssignProfessorToDepartment/1/2",
+                        method = "POST",
+                        roles = "admin"
+                    },
+                    AssignStudentToGroup = new
+                    {
+                        path = "api/v1/user/AssignStudentToGroup/1/2",
+                        method = "POST",
+                        roles = "admin"
+                    },
                 },
                 facultyRequests = new
                 {
@@ -181,7 +217,49 @@ namespace Famcs.Controllers.Api.V1
                         method = "GET",
                         roles = "all",
                     }
+                },
+                groupsRequests = new
+                {
+                    createGroup = new
+                    {
+                        path = "api/v1/group/create",
+                        method = "POST",
+                        bodyExample = new
+                        {
+                            Name = "12",
+                            DepartmentId = "1",
+                            SpecialtyId = "1",
+                            AdmissionDate = "2012-04-23T18:25:43.511Z"
+                        },
+                        headers = new { name = "Content-Type", value = "application/json" },
+                        roles = "admin"
+                    },
+                    GetGroupById = new
+                    {
+                        path = "api/v1/group/get/42",
+                        method = "GET",
+                        roles = "all",
+                    },
+                    GetGroups = new
+                    {
+                        path = "api/v1/group/get",
+                        method = "GET",
+                        roles = "all",
+                    },
+                    GetGroupByDepartmentId = new
+                    {
+                        path = "api/v1/group/GetByDepartment/42",
+                        method = "GET",
+                        roles = "all",
+                    },
+                    GetGroupBySpecialtyId = new
+                    {
+                        path = "api/v1/group/GetBySpecialty/42",
+                        method = "GET",
+                        roles = "all",
+                    }
                 }
+
             };
 
             return Json(docs);

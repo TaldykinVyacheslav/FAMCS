@@ -63,12 +63,14 @@ namespace Famcs.Models
 
             builder.Entity<Specialty>(specialty =>
             {
-
+                specialty.HasKey(t => t.Id);
+                specialty.Property(a => a.Id).ValueGeneratedOnAdd();
             });
 
             builder.Entity<Group>(group =>
             {
                 group.HasKey(t => t.Id);
+                group.Property(a => a.Id).ValueGeneratedOnAdd();
             });
         }
         protected void ConfigureDataBasereferences(ModelBuilder builder)

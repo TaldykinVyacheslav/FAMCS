@@ -11,6 +11,7 @@ namespace Famcs.Models
         public DateTime AdmissionDate { get; set; }
         public long SpecialtyId { get; set; }
         public long DepartmentId { get; set; }
+        public string Name { get; set; }
 
         public virtual Specialty Specialty { get; }
         public virtual Department Department { get; }

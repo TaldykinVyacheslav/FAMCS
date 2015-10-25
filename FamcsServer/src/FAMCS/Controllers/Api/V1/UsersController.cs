@@ -139,12 +139,85 @@ namespace Famcs.Controllers.Api.V1
             return new ResultViewModel<IEnumerable<UserInfoViewModel>>(_applicationDbContext.Users.Where(t => t.UserName != "admin").ToList().Select(t => new UserInfoViewModel(t)).ToList());
         }
 
+
         [AllowAnonymous]
         [HttpGet("{id}")]
         public ResultViewModel<UserInfoViewModel> Get(long id)
         {
             return new ResultViewModel<UserInfoViewModel>(_applicationDbContext.Users.Where(t => t.UserName != "admin").ToList().Select(t => new UserInfoViewModel(t)).FirstOrDefault());
         }
+
+        [AllowAnonymous]
+        [HttpGet("{id}")]
+        public ResultViewModel<IEnumerable<UserInfoViewModel>> GetByGroupId(long id)
+        {
+            return new ResultViewModel<IEnumerable<UserInfoViewModel>>(_applicationDbContext.Users.Where(t => t.UserName != "admin" && t.GroupId == id).ToList().Select(t => new UserInfoViewModel(t)).ToList());
+        }
+
+        [AllowAnonymous]
+        [HttpGet("{id}")]
+        public ResultViewModel<IEnumerable<UserInfoViewModel>> GetByDepartmentId (long id)
+        {
+            return new ResultViewModel<IEnumerable<UserInfoViewModel>>(_applicationDbContext.Users.Where(t => t.UserName != "admin" && t.DepartmentId == id).ToList().Select(t => new UserInfoViewModel(t)).ToList());
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ResultViewModel<IEnumerable<UserInfoViewModel>> GetProfessors()
+        {
+            long id = _applicationDbContext.Roles.Where(t => t.Name == "professor").First().Id;
+            return new ResultViewModel<IEnumerable<UserInfoViewModel>>(_applicationDbContext.Users.Where(t => t.Roles.Any(r => r.RoleId == id)).ToList().Select(t => new UserInfoViewModel(t)).ToList());
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public ResultViewModel<IEnumerable<UserInfoViewModel>> GetStudents()
+        {
+            long id = _applicationDbContext.Roles.Where(t => t.Name == "student").First().Id;
+            return new ResultViewModel<IEnumerable<UserInfoViewModel>>(_applicationDbContext.Users.Where(t => t.Roles.Any(r => r.RoleId == id)).ToList().Select(t => new UserInfoViewModel(t)).ToList());
+        }
+
+        [HttpPost("{userId}/{depId}")]
+        [AllowAnonymous]
+        public ResultViewModel<UserInfoViewModel> AssignProfessorToDepartment(long userId, long depId)
+        {
+            long roleId = _applicationDbContext.Roles.Where(t => t.Name == "professor").First().Id;
+            var user = _applicationDbContext.Users.Where(t => t.Id == userId).FirstOrDefault();
+            if (user != null)
+            {
+                user.DepartmentId = depId;
+                _applicationDbContext.SaveChanges();
+                return new ResultViewModel<UserInfoViewModel>(new UserInfoViewModel(user));
+            }
+            else
+            {
+                return new ResultViewModel<UserInfoViewModel>("No such user");
+            }
+        }
+
+        [HttpPost("{userId}/{grId}")]
+        [AllowAnonymous]
+        public ResultViewModel<UserInfoViewModel> AssignStudentToGroup(long userId, long grId)
+        {
+            long roleId = _applicationDbContext.Roles.Where(t => t.Name == "student").First().Id;
+            var user = _applicationDbContext.Users.Where(t => t.Id == userId).FirstOrDefault();
+            if (user != null)
+            {
+                user.GroupId = grId;
+                _applicationDbContext.SaveChanges();
+                return new ResultViewModel<UserInfoViewModel>(new UserInfoViewModel(user));
+            }
+            else
+            {
+                return new ResultViewModel<UserInfoViewModel>("No such user");
+            }
+        }
+
+        //[HttpPost]
+        //[AllowAnonymous]
+        //public ResultViewModel<IEnumerable<UserInfoViewModel>> AssignStudentToGroup()
+        //{
+
+        //}
 
         //Test
         //// GET: api/values
