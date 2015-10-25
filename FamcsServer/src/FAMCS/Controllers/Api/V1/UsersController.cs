@@ -144,7 +144,7 @@ namespace Famcs.Controllers.Api.V1
         [HttpGet("{id}")]
         public ResultViewModel<UserInfoViewModel> Get(long id)
         {
-            return new ResultViewModel<UserInfoViewModel>(_applicationDbContext.Users.Where(t => t.UserName != "admin").ToList().Select(t => new UserInfoViewModel(t)).FirstOrDefault());
+            return new ResultViewModel<UserInfoViewModel>(_applicationDbContext.Users.Where(t => t.UserName != "admin" && t.Id == id).ToList().Select(t => new UserInfoViewModel(t)).FirstOrDefault());
         }
 
         [AllowAnonymous]
