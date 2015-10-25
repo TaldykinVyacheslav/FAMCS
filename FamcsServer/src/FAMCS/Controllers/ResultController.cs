@@ -21,6 +21,10 @@ namespace FAMCS.Server.Controllers
         {
             return "NotAuth";
         }
-        
+
+        public string Error()
+        {
+            return "Error";
+        }
     }
 }

@@ -14,7 +14,7 @@
 //{
 //    [Authorize]
 //    public class ManageController : Controller
-//    {
+//    { 
 //        private readonly UserManager<User> _userManager;
 //        private readonly SignInManager<User> _signInManager;
 

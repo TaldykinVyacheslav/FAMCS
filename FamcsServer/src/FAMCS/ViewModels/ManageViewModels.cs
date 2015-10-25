@@ -7,7 +7,7 @@ using Microsoft.AspNet.Http.Authentication;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Mvc.Rendering;
 
-namespace FAMCS.Server.Models
+namespace Famcs.ViewModels
 {
     public class IndexViewModel
     {

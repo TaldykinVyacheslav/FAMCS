@@ -8,7 +8,7 @@ using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Framework.OptionsModel;
 
-namespace FAMCS.Server.Models
+namespace Famcs.Models
 {
     public class FamcsContext : IdentityDbContext<User, Role, long>
     {
@@ -40,7 +40,8 @@ namespace FAMCS.Server.Models
             builder.Entity<User>(user =>
             {
                 user.ToTable("Users");
-                user.Key(t => t.Id);
+                user.HasKey(t => t.Id);
+                user.HasOne(t => t.Department).WithMany(t => t.Professors).ForeignKey(t => t.DepartmentId).PrincipalKey(t => t.Id);
             });
             builder.Entity<Role>().ToTable("Roles");
             builder.Entity<IdentityRoleClaim<Int64>>().ToTable("RoleClaims");
@@ -50,12 +51,14 @@ namespace FAMCS.Server.Models
 
             builder.Entity<Faculty>(faculty => 
             {
-
+                faculty.HasKey(t => t.Id);
+                faculty.Property(a => a.Id).ValueGeneratedOnAdd();
             });
 
             builder.Entity<Department>(departament =>
             {
-
+                departament.HasKey(t => t.Id);
+                departament.Property(a => a.Id).ValueGeneratedOnAdd();
             });
 
             builder.Entity<Specialty>(specialty =>
@@ -65,25 +68,22 @@ namespace FAMCS.Server.Models
 
             builder.Entity<Group>(group =>
             {
-
+                group.HasKey(t => t.Id);
             });
         }
         protected void ConfigureDataBasereferences(ModelBuilder builder)
         {
             //Faculty 1 - N Departments
-            builder.Entity<Faculty>().Collection(t => t.Departments).InverseReference(t => t.Faculty).ForeignKey(t => t.FacultyId).PrincipalKey(t => t.Id);
+            builder.Entity<Faculty>().HasMany(t => t.Departments).WithOne(t => t.Faculty).ForeignKey(t => t.FacultyId).PrincipalKey(t => t.Id);
 
             //Faculty 1 - N Specialties
-            builder.Entity<Faculty>().Collection(t => t.Specialties).InverseReference(t => t.Faculty).ForeignKey(t => t.FacultyId).PrincipalKey(t => t.Id);
+            builder.Entity<Faculty>().HasMany(t => t.Specialties).WithOne(t => t.Faculty).ForeignKey(t => t.FacultyId).PrincipalKey(t => t.Id);
 
             //Specialty 1 - N Groups
-            builder.Entity<Specialty>().Collection(t => t.Groups).InverseReference(t => t.Specialty).ForeignKey(t => t.SpecialtyId).PrincipalKey(t => t.Id);
+            builder.Entity<Specialty>().HasMany(t => t.Groups).WithOne(t => t.Specialty).ForeignKey(t => t.SpecialtyId).PrincipalKey(t => t.Id);
 
             //Department 1 - N Groups
-            builder.Entity<Department>().Collection(t => t.Groups).InverseReference(t => t.Department).ForeignKey(t => t.SpecialtyId).PrincipalKey(t => t.Id);
-            
-            //Department 1 - 1 User
-            builder.Entity<Department>().Collection(t => t.Professors).InverseReference(t => t.Department).ForeignKey(t => t.DepartamentId).PrincipalKey(t => t.Id);
+            builder.Entity<Department>().HasMany(t => t.Groups).WithOne(t => t.Department).ForeignKey(t => t.SpecialtyId).PrincipalKey(t => t.Id);
         }
     }
 }

@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FAMCS.Server.Models
+namespace Famcs.Models
 {
-    public class UserClaim : IdentityUserClaim<long>
+    public class UserRole : IdentityUserRole<long>
     {
+        public DateTime CreateDate { get; set; }
     }
 }

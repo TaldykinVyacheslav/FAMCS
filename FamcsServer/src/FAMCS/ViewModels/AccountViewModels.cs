@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Mvc.Rendering;
 
-namespace FAMCS.Server.Models
+namespace Famcs.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
@@ -68,19 +68,6 @@ namespace FAMCS.Server.Models
         public string Email { get; set; }
     }
 
-    public class LoginViewModel
-    {
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
-
-        [Required]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-
-        [Display(Name = "Remember me?")]
-        public bool RememberMe { get; set; }
-    }
 
     public class RegisterViewModel
     {
