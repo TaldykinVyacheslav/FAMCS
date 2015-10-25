@@ -134,26 +134,33 @@ namespace Famcs.Controllers.Api.V1
 
         [HttpGet]
         [AllowAnonymous]
-        public ResultViewModel<IEnumerable<UserInfoViewModel>> GetAllUsers()
+        public ResultViewModel<IEnumerable<UserInfoViewModel>> Get()
         {
             return new ResultViewModel<IEnumerable<UserInfoViewModel>>(_applicationDbContext.Users.Where(t => t.UserName != "admin").ToList().Select(t => new UserInfoViewModel(t)).ToList());
         }
 
-        //Test
-        // GET: api/values
-        [Authorize(Roles = "admin")]
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [AllowAnonymous]
+        [HttpGet("{id}")]
+        public ResultViewModel<UserInfoViewModel> Get(long id)
         {
-            return new string[] { "value1", "value2" };
+            return new ResultViewModel<UserInfoViewModel>(_applicationDbContext.Users.Where(t => t.UserName != "admin").ToList().Select(t => new UserInfoViewModel(t)).FirstOrDefault());
         }
 
-        // GET: api/values
-        [AllowAnonymous]
-        [HttpGet]
-        public IEnumerable<string> Get2()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        //Test
+        //// GET: api/values
+        //[Authorize(Roles = "admin")]
+        //[HttpGet]
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
+
+        //// GET: api/values
+        //[AllowAnonymous]
+        //[HttpGet]
+        //public IEnumerable<string> Get2()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
     }
 }

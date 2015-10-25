@@ -26,9 +26,9 @@ namespace Famcs.Controllers.Api.V1
 
         [AllowAnonymous]
         [HttpGet("{id}")]
-        public FacultyViewModel Get(long id)
+        public ResultViewModel<FacultyViewModel> Get(long id)
         {
-            return _applicationDbContext.Faculties.Where(t => t.Id == id).ToList().Select(t => new FacultyViewModel(t)).FirstOrDefault();
+            return new ResultViewModel<FacultyViewModel>(_applicationDbContext.Faculties.Where(t => t.Id == id).ToList().Select(t => new FacultyViewModel(t)).FirstOrDefault());
         }
 
         [AllowAnonymous]
