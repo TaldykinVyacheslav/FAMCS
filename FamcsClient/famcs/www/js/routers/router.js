@@ -8,19 +8,18 @@ var app = app || {};
   // ----------
   var FamcsRouter = Backbone.Router.extend({
     routes: {
-      '*filter': 'setFilter'
+      '':             'index',
+      'trips':        'trips',
+      'trips/new':    'newTrip',
+      'trips/:id':    'showTrip'
     },
 
-    setFilter: function (param) {
-      // Set the current filter to be used
-      app.TodoFilter = param || '';
-
-      // Trigger a collection filter event, causing hiding/unhiding
-      // of Todo view items
-      app.todos.trigger('filter');
+    index: function() {
+      var faculty = new app.
+      $('#content').empty().append(faculty);
     }
   });
 
-  app.TodoRouter = new TodoRouter();
+  app.FamcsRouter = new FamcsRouter();
   Backbone.history.start();
 })();

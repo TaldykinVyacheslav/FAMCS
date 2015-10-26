@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+
+    <base href="/"/>
+    <title><%= pkg.title %></title>
+    <link rel="stylesheet" type="text/css" href="css/app.css" media="all" />
+  </head>
+  <body ng-cloak>
+
+  <header class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavigationController" ng-show="showNavBar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
+            <span class="sr-only">Изменить навигацию</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="general" class="navbar-brand"></a>
+          <h4 class="navbar-title visible-xs text-center"><strong>{{ getTitle() }}</strong></h4>
+        </div>
+
+        <!-- Desktop navigation -->
+        <nav class="hidden-xs">
+          <ul class="nav navbar-nav">
+            <li><a href="general">О факультете</a></li>
+            <li><a href="specialities">Специальности</a></li>
+            <li><a href="history">Кафедры</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><p class="username">{{ currentUser.username }}</p></li>
+            <li><a href="#" ng-click="logout()" title="Log out"><span class="glyphicon glyphicon-log-out"></span></a></li>
+          </ul>
+        </nav>
+
+        <!-- Mobile navigation -->
+        <nav class="visible-xs" collapse="isCollapsed" ng-click="isCollapsed = !isCollapsed">
+          <ul class="nav navbar-nav">
+            <li><a href="general">О факультете</a></li>
+            <li><a href="settings">Специальности</a></li>
+            <li><a href="history">Кафедры</a></li>
+            <li>
+              <a href="#" ng-click="logout()">
+                <span class="glyphicon glyphicon-log-out"></span> Выйти [{{ currentUser.username }}]</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+    <div >
+      <div class="container" id="view" ng-view></div>
+    </div>
+
+    <script type="text/javascript" src="js/app.js"></script>
+  </body>
+</html>

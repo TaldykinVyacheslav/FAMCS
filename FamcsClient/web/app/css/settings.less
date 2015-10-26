@@ -1,0 +1,36 @@
+#settings {
+  form {
+
+    & > div[class$='settings'] {
+      margin-bottom: 5%;
+
+      button.set-now-btn {
+        width: 76px;
+        position: absolute;
+        top: 25px;
+        right: -67px;
+      }
+
+      input#intervalInput {
+        & + span {
+          position: absolute;
+          top: 32px;
+          right: 0;
+          font-weight: bold;
+          font-style: italic;
+        }
+      }
+    }
+
+    h5 {
+      text-align: left;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    div.success-message {
+      margin-top: 10px;
+
+    }
+  }
+}

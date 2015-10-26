@@ -7,6 +7,6 @@ var app = app || {};
 (function() {
   'use strict';
 
-  app.Department = Backbone.Model.extend();
+  app.Speciality = Backbone.Model.extend();
 
 })();

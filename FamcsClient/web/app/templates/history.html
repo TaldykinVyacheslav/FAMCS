@@ -1,0 +1,112 @@
+<!--
+  ~ Marketo-Sage Connector (MSC)
+  ~ Copyright (c) 2015 Dual Lab sprl - All rights reserved
+  ~
+  ~ filename: history.html
+  -->
+
+<div id="history">
+  <div class="title row">
+    <div class="col-sm-12">
+      <h4>History</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-bordered">
+        <tr>
+          <th class="type">
+            <a href="#" ng-click="updateReports(currentPage, 'type', !sortAsc)">
+              Type
+              <span ng-show="sortType == 'type' && sortAsc" class="glyphicon glyphicon-triangle-bottom"></span>
+              <span ng-show="sortType == 'type' && !sortAsc" class="glyphicon glyphicon-triangle-top"></span>
+            </a>
+          </th>
+          <th class="start">
+            <a href="#" ng-click="updateReports(currentPage, 'startTime', !sortAsc)">
+              Start
+              <span ng-show="sortType == 'startTime' && !sortAsc" class="glyphicon glyphicon-triangle-bottom"></span>
+              <span ng-show="sortType == 'startTime' && sortAsc" class="glyphicon glyphicon-triangle-top"></span>
+            </a>
+          </th>
+          <th class="end">
+            <a href="#" ng-click="updateReports(currentPage, 'endTime', !sortAsc)">
+              End
+              <span ng-show="sortType == 'endTime' && !sortAsc" class="glyphicon glyphicon-triangle-bottom"></span>
+              <span ng-show="sortType == 'endTime' && sortAsc" class="glyphicon glyphicon-triangle-top"></span>
+            </a>
+          </th>
+          <th class="duration">
+            <a href="#">
+              Duration
+              <span ng-show="sortType == 'duration' && sortAsc" class="glyphicon glyphicon-triangle-bottom"></span>
+              <span ng-show="sortType == 'duration' && !sortAsc" class="glyphicon glyphicon-triangle-top"></span>
+            </a>
+          </th>
+          <th class="resources">
+            <a href="#" ng-click="updateReports(currentPage, 'resourcesInvolved', !sortAsc)">
+              Resources involved
+              <span ng-show="sortType == 'resourcesInvolved' && sortAsc" class="glyphicon glyphicon-triangle-bottom"></span>
+              <span ng-show="sortType == 'resourcesInvolved' && !sortAsc" class="glyphicon glyphicon-triangle-top"></span>
+            </a>
+          </th>
+          <th class="resources">
+            <a href="#" ng-click="updateReports(currentPage, 'status', !sortAsc)">
+              Status
+              <span ng-show="sortType == 'status' && sortAsc" class="glyphicon glyphicon-triangle-bottom"></span>
+              <span ng-show="sortType == 'status' && !sortAsc" class="glyphicon glyphicon-triangle-top"></span>
+            </a>
+          </th>
+
+        </tr>
+
+        <tr ng-repeat="report in reports">
+          <td><i>{{report.type}}</i></td>
+          <td>{{report.startTime}}</td>
+          <td>{{report.endTime}}</td>
+          <td>{{report.duration}}</td>
+          <td>{{report.resourcesInvolved}}</td>
+          <td>{{report.status}}</td>
+          <!--<td><a ng-href="history/{{report.id}}">details</a></td>-->
+        </tr>
+
+        <tr ng-hide="reports.length">
+          <td colspan="7" class="text-center"><i>History is empty</i></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row pagination-container">
+    <div class="col-sm-12">
+      <ul class="pager">
+        <li class="first">
+          <a href="#" ng-click="updateReports(1)" ng-disabled="currentPage === 1">
+            <span aria-hidden="true">&larr;</span> First
+          </a>
+        </li>
+        <li class="previous">
+          <a href="#" ng-click="updateReports(currentPage - 1)" ng-disabled="currentPage === 1">
+            <span aria-hidden="true">&larr;</span> Previous
+          </a>
+        </li>
+        <li ng-repeat="pageLabel in pagesLabels" ng-class="{'active': currentPage === pageLabel}">
+          <a href="#" ng-click="updateReports(pageLabel)">
+            {{pageLabel}}
+          </a>
+        </li>
+        <li class="last">
+          <a href="#" ng-click="updateReports(pagesNumber)" ng-disabled="currentPage >= pagesNumber">
+            Last <span aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+        <li class="next">
+          <a href="#" ng-click="updateReports(currentPage + 1)" ng-disabled="currentPage >= pagesNumber">
+            Next <span aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
