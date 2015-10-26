@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{39011A00-31F9-4D53-A1A0-3D0532319B75}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BDAE5EAD-A2BF-41BC-BC71-B84831F5D181}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+		NuGet.Config = NuGet.Config
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FAMCS", "src\FAMCS\FAMCS.xproj", "{B5BA3927-9E52-4A8B-A41C-B8BAB7A8E0EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5BA3927-9E52-4A8B-A41C-B8BAB7A8E0EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5BA3927-9E52-4A8B-A41C-B8BAB7A8E0EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5BA3927-9E52-4A8B-A41C-B8BAB7A8E0EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5BA3927-9E52-4A8B-A41C-B8BAB7A8E0EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B5BA3927-9E52-4A8B-A41C-B8BAB7A8E0EF} = {39011A00-31F9-4D53-A1A0-3D0532319B75}
+	EndGlobalSection
+EndGlobal
