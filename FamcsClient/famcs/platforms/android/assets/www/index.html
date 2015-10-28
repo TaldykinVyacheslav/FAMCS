@@ -33,17 +33,43 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <title>FAMICS</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+
+
+        <!--<h1>Apache Cordova</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>-->
+
+        <nav>
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <li role="presentation"><a href="#">Departments</a></li>
+                <li role="presentation"><a href="#">Specialities</a></li>
+                <li role="presentation"><a href="#">Students</a></li>
+                <li role="presentation"><a href="#">Coordinates</a></li>
+            </ul>
+        </nav>
+
+        <div class="container">
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
+        <!--<script type="text/javascript" src="cordova.js"></script>-->
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/underscore.js"></script>
+        <script type="text/javascript" src="js/backbone.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/models/speciality.js"></script>
+        <script type="text/javascript" src="js/models/user.js"></script>
+        <script type="text/javascript" src="js/models/department.js"></script>
+        <script type="text/javascript" src="js/views/login.js"></script>
+        <script type="text/javascript" src="js/views/navbar.js"></script>
+        <script type="text/javascript" src="js/collections/users.js"></script>
+        <script type="text/javascript" src="js/collections/specialities.js"></script>
+        <script type="text/javascript" src="js/collections/departments.js"></script>
+        <script type="text/javascript" src="js/routers/router.js"></script>
     </body>
 </html>

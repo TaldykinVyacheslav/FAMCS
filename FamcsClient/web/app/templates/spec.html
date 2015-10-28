@@ -13,19 +13,38 @@
     </div>
   </div>
 
-  <div class="panel panel-default">
+  <div class="panel panel-default" ng-repeat="spec in specialities">
     <div class="panel-body">
-      <a href="PM">Прикладная информатика</a>
+      <a href="PM">
+        {{spec.Name}}
+        <i class="pull-right glyphicon glyphicon-chevron-right"></i>
+      </a>
+
     </div>
   </div>
   <div class="panel panel-default">
     <div class="panel-body">
-      <a href="PM">Прикладная информатика</a>
+      <a href="PM">
+        Прикладная информатика
+        <i class="pull-right glyphicon glyphicon-chevron-right"></i>
+      </a>
     </div>
   </div>
   <div class="panel panel-default">
     <div class="panel-body">
-      <a href="PM">Информатика</a>
+      <a href="PM">
+        Прикладная информатика
+        <i class="pull-right glyphicon glyphicon-chevron-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="row pull-right">
+    <div class="col-sm-12">
+      <a href="specialities/add" type="button" class="btn btn-success">
+        Добавить специальность&nbsp;&nbsp;
+        <i class="pull-right glyphicon glyphicon-plus"></i>
+      </a>
     </div>
   </div>
 </div>

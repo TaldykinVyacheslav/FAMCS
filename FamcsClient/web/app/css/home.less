@@ -1,0 +1,47 @@
+#home {
+  text-align: center;
+
+  p.threads-num {
+    font-style: italic;
+
+    span.value {
+      font-weight: bold;
+    }
+  }
+
+  button.sync-now {
+    margin-top: 20px;
+    font-size: 16px;
+    padding: 7px 15px;
+
+    span[class$='play'] {
+      color: #008000;
+    }
+  }
+
+  div.sync-status {
+    margin-top: 20px;
+
+    h5 {
+      font-size: 1.5em;
+      margin-bottom: 25px;
+    }
+
+    .row > div {
+      &.label-div {
+        text-align: right;
+
+        label {
+          font-weight: bold;
+        }
+      }
+      &.value-div {
+        text-align: left;
+
+        p {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

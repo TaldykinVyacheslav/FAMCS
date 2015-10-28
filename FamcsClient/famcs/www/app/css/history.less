@@ -1,0 +1,39 @@
+#history {
+  .pagination-container {
+    & > div {
+      text-align: center;
+
+      .pager {
+        li {
+          a {
+            &[disabled] {
+              color: #777777;
+            }
+          }
+
+          &.active {
+            a {
+              z-index: 2;
+              color: #ffffff;
+              background-color: #428bca;
+              border-color: #428bca;
+              cursor: default;
+            }
+          }
+
+          &.first {
+            a {
+              float: left;
+            }
+          }
+
+          &.last {
+            a{
+              float: right;
+            }
+          }
+        }
+      }
+    }
+  }
+}

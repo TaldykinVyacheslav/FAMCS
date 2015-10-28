@@ -6,7 +6,8 @@
  */
 
 angular.module("app").controller('SpecController',
-['$scope', '$location', 'DateService', 'SettingsResource', 'settings',
-function($scope, $location, DateService, SettingsResource, settings) {
-
-}]);
+['$scope', 'specialities',
+  function($scope, specialities) {
+    $scope.specialities = specialities;
+  }
+]);

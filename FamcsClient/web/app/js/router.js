@@ -7,41 +7,59 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
     controller: 'LoginController'
   });
 
-  $routeProvider.when('/general', {
-    templateUrl: 'general.html',
-    controller: 'GeneralController',
-    resolve: {
-      'settings': function(SettingsResource) {
-        return SettingsResource.get().$promise;
-      },
-      'lastSyncReport': function(SynchroResource) {
-        return SynchroResource.getLastSyncReport().$promise;
-      },
-      'syncStatus': function(SynchroResource) {
-        return SynchroResource.getSyncStatus().$promise;
-      }
-    }
+  $routeProvider.when('/home', {
+    templateUrl: 'home.html',
+    controller: 'HomeController'
+  });
+
+
+  $routeProvider.when('/specialities/add', {
+    templateUrl: 'spec-add.html',
+    controller: 'SpecAddController'
   });
 
   $routeProvider.when('/specialities', {
     templateUrl: 'spec.html',
     controller: 'SpecController',
     resolve: {
-      'settings': function(SettingsResource) {
-        return SettingsResource.get().$promise;
+      'specialities': function() {
+        return [
+          {
+            "Name":"Прикладная математика",
+            "FacultyId":"1"
+          },
+          {
+            "Name":"Прикладная информатика",
+            "FacultyId":"1"
+          },
+          {
+            "Name":"Информатика",
+            "FacultyId":"1"
+          }
+        ];
       }
     }
   });
 
-  $routeProvider.when('/history', {
-    templateUrl: 'history.html',
-    controller: 'HistoryController',
+  $routeProvider.when('/departments', {
+    templateUrl: 'dep.html',
+    controller: 'DepController',
     resolve: {
-      'reports': function(HistoryResource) {
-        return HistoryResource.list({pageNum : 0, orderBy: 'startTime', sortDir: 'DESC'}).$promise;
-      },
-      'reportsSize': function(HistoryResource) {
-        return HistoryResource.getSize().$promise;
+      'departments': function() {
+        return [
+          {
+            "Name":"Информационных систем управления",
+            "FacultyId":"1"
+          },
+          {
+            "Name":"Вычислительной математики",
+            "FacultyId":"1"
+          },
+          {
+            "Name":"Многопроцессорных систем и сетей",
+            "FacultyId":"1"
+          }
+        ];
       }
     }
   });

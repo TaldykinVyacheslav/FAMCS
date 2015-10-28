@@ -16,7 +16,7 @@ angular.module("app", ["ngResource", "ngRoute", "ngCookies", "ui.bootstrap"])
     if ($location.path() === '/loading') {
       // just skip it
     } else if(AuthenticationService.isLoggedIn()) {
-      var path = $location.path() === '/login' ? '/general' : $location.path();
+      var path = $location.path() === '/login' ? '/home' : $location.path();
 
       if (AuthenticationService.getCurrentUser().$resolved) {
         if ($location.path() === '/login') {
