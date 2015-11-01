@@ -12,12 +12,6 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
     controller: 'HomeController'
   });
 
-
-  $routeProvider.when('/specialities/add', {
-    templateUrl: 'spec-item.html',
-    controller: 'SpecItemController'
-  });
-
   $routeProvider.when('/specialities', {
     templateUrl: 'spec.html',
     controller: 'SpecController',
@@ -25,7 +19,7 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
       'specialities': function() {
         return [
           {
-            "Name":"Прикладная математика",
+            "Name":"Информационных систем управления",
             "FacultyId":"1"
           },
           {
@@ -37,6 +31,43 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
             "FacultyId":"1"
           }
         ];
+      }
+    }
+  });
+
+  $routeProvider.when('/specialities/add', {
+    templateUrl: 'spec-item.html',
+    controller: 'SpecItemController',
+    resolve: {
+      'addMode': function() { return true; },
+      'spec': function() {
+        return {
+          "Name":"",
+          "Description": ""
+        };
+      }
+    }
+  });
+
+  $routeProvider.when('/specialities/:id', {
+    templateUrl: 'spec-item.html',
+    controller: 'SpecItemController',
+    resolve: {
+      'addMode': function() { return false; },
+      'spec': function() {
+        return {
+          "Name":"Прикладная математика",
+          "Description": "Прикладная математика – область знаний, включающая в себя " +
+          "совокупность современных математических методов, средств математического " +
+          "моделирования и компьютерных технологий, ориентированных на непосредственное \n\n" +
+          "использование во всех сферах научной, производственной и хозяйственной деятельности." +
+          "В соответствии с ОКРБ 011-2009 специальность «Прикладная математика» относится к " +
+          "естественнонаучному профилю подготовки специалистов с высшим математическим образованием," +
+          "входит в группу специальностей «Математические науки и информатика» и имеет код 1-31 03 03.\n\n" +
+          "В рамках специальности на факультете ведется подготовка специалистов по направлению " +
+          "«Прикладная математика» (научно-производственная деятельность). Курс обучения " +
+          "обеспечивает получение профессиональной квалификации «математик-программист»."
+        };
       }
     }
   });
@@ -88,12 +119,12 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
           {
             "FirstName":"Павел",
             "LastName":"Савик",
-            "Email":"ignat@mail.com"
+            "Email":"pavel@mail.com"
           },
           {
             "FirstName":"Александр",
             "LastName":"Полторацкий",
-            "Email":"ignat@mail.com"
+            "Email":"alex@mail.com"
           }
         ];
       }
@@ -104,25 +135,25 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
 
   // todo: implement specific report info page
   /*$routeProvider.when('/history/:id', {
-    templateUrl: 'history-details.html',
-    controller: 'HistoryDetailsController',
-    resolve: {
-      'statisticsDetails': function($routeParams) {
-        return {
-          id: $routeParams.id,
-          start: 'June 18th 2015, 09:56',
-          end: 'June 18th 2015, 10:44',
-          duration: '00:33:22',
-          resouces: [
-            {id: 1, url: 'http://www.sage.com/'},
-            {id: 2, url: 'http://www.sage.com/'},
-            {id: 3, url: 'http://www.sage.com/'},
-            {id: 4, url: 'http://www.sage.com/'}
-          ]
-        };
-      }
-    }
-  });*/
+   templateUrl: 'history-details.html',
+   controller: 'HistoryDetailsController',
+   resolve: {
+   'statisticsDetails': function($routeParams) {
+   return {
+   id: $routeParams.id,
+   start: 'June 18th 2015, 09:56',
+   end: 'June 18th 2015, 10:44',
+   duration: '00:33:22',
+   resouces: [
+   {id: 1, url: 'http://www.sage.com/'},
+   {id: 2, url: 'http://www.sage.com/'},
+   {id: 3, url: 'http://www.sage.com/'},
+   {id: 4, url: 'http://www.sage.com/'}
+   ]
+   };
+   }
+   }
+   });*/
 
   $routeProvider.otherwise({ redirectTo: '/login' });
 
