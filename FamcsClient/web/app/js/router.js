@@ -16,21 +16,8 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
     templateUrl: 'spec.html',
     controller: 'SpecController',
     resolve: {
-      'specialities': function() {
-        return [
-          {
-            "Name":"Информационных систем управления",
-            "FacultyId":"1"
-          },
-          {
-            "Name":"Прикладная информатика",
-            "FacultyId":"1"
-          },
-          {
-            "Name":"Информатика",
-            "FacultyId":"1"
-          }
-        ];
+      'specialities': function(SpecResource) {
+        return SpecResource.get().$promise;
       }
     }
   });
@@ -55,20 +42,8 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
     controller: 'SpecItemController',
     resolve: {
       'addMode': function() { return false; },
-      'spec': function() {
-        return {
-          "Name":"Прикладная математика",
-          "Description": "Прикладная математика – область знаний, включающая в себя " +
-          "совокупность современных математических методов, средств математического " +
-          "моделирования и компьютерных технологий, ориентированных на непосредственное \n\n" +
-          "использование во всех сферах научной, производственной и хозяйственной деятельности." +
-          "В соответствии с ОКРБ 011-2009 специальность «Прикладная математика» относится к " +
-          "естественнонаучному профилю подготовки специалистов с высшим математическим образованием," +
-          "входит в группу специальностей «Математические науки и информатика» и имеет код 1-31 03 03.\n\n" +
-          "В рамках специальности на факультете ведется подготовка специалистов по направлению " +
-          "«Прикладная математика» (научно-производственная деятельность). Курс обучения " +
-          "обеспечивает получение профессиональной квалификации «математик-программист»."
-        };
+      'spec': function($route, SpecResource) {
+        return SpecResource.get({id: $route.current.params.id}).$promise;
       }
     }
   });

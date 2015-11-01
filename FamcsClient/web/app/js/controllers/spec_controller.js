@@ -8,6 +8,6 @@
 angular.module("app").controller('SpecController',
 ['$scope', 'specialities',
   function($scope, specialities) {
-    $scope.specialities = specialities;
+    $scope.specialities = specialities.Result;
   }
 ]);

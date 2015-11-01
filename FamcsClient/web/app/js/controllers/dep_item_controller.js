@@ -9,7 +9,7 @@ angular.module("app").controller('DepItemController',
       $scope.dep = addMode ? dep : dep.Result;
 
       $scope.save = function() {
-        DepResource.create(dep).$promise.then(function() {
+        DepResource.create($scope.dep).$promise.then(function() {
           $window.history.back();
         });
       };
@@ -59,8 +59,8 @@ angular.module("app").controller('DepItemController',
         "Заведующий кафедрой — КУРБАЦКИЙ Александр Николаевич, профессор, доктор технических наук, Заслуженный деятель науки Республики Беларусь."
       };
 
-        if(!$scope.addMode)
-          angular.extend($scope.dep, {"Description": $scope.descMap[$scope.dep.Id]});
+      if(!$scope.addMode)
+        angular.extend($scope.dep, {"Description": $scope.descMap[$scope.dep.Id]});
 
     }
   ]);
