@@ -59,8 +59,9 @@ angular.module("app").controller('DepItemController',
         "Заведующий кафедрой — КУРБАЦКИЙ Александр Николаевич, профессор, доктор технических наук, Заслуженный деятель науки Республики Беларусь."
       };
 
-      if(!$scope.addMode)
+      if(!$scope.addMode) {
         angular.extend($scope.dep, {"Description": $scope.descMap[$scope.dep.Id]});
+      }
 
     }
   ]);

@@ -5,9 +5,9 @@
     </div>
   </div>
 
-  <div class="panel panel-default" ng-repeat="gr in groups">
+  <div class="panel panel-default" ng-repeat="gr in groups | orderBy:'Name'">
     <div class="panel-body">
-      <a ng-href="groups/{{$index}}">
+      <a ng-href="groups/{{gr.Id}}">
         {{gr.Name}}
         <i class="pull-right glyphicon glyphicon-chevron-right"></i>
       </a>

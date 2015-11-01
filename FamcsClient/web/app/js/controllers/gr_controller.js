@@ -5,6 +5,6 @@
 angular.module("app").controller('GrController',[
   '$scope', 'groups',
   function($scope, groups) {
-    $scope.groups = groups;
+    $scope.groups = groups.Result;
   }
 ]);

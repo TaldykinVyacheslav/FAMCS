@@ -84,7 +84,8 @@ angular.module("app").controller('SpecItemController',
         'квалификации «информатик. специалист по разработке программного обеспечения ».'
       };
 
-      if(!$scope.addMode)
+      if(!$scope.addMode) {
         angular.extend($scope.spec, {"Description": $scope.descMap[$scope.spec.Id]});
+      }
     }
   ]);

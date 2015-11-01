@@ -88,34 +88,8 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
     templateUrl: 'gr.html',
     controller: 'GrController',
     resolve: {
-      'groups': function() {
-        return [
-          {
-            "Name":"Группа 1",
-            "DepartmentId":"1",
-            "SpecialtyId":"1"
-          },
-          {
-            "Name":"Группа 2",
-            "DepartmentId":"2",
-            "SpecialtyId":"2"
-          },
-          {
-            "Name":"Группа 3",
-            "DepartmentId":"3",
-            "SpecialtyId":"3"
-          },
-          {
-            "Name":"Группа 4",
-            "DepartmentId":"1",
-            "SpecialtyId":"2"
-          },
-          {
-            "Name":"Группа 5",
-            "DepartmentId":"2",
-            "SpecialtyId":"3"
-          }
-        ];
+      'groups': function (GrResource) {
+        return GrResource.get().$promise;
       }
     }
   });
@@ -133,37 +107,11 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
           "FacultyId":"1"
         };
       },
-      'specialities': function () {
-        return [
-          {
-            "Name":"Прикладная математика",
-            "Id":"1"
-          },
-          {
-            "Name":"Информатика",
-            "Id":"2"
-          },
-          {
-            "Name":"Прикладная информатика",
-            "Id":"3"
-          }
-        ];
+      'specialities': function(SpecResource) {
+        return SpecResource.get().$promise;
       },
-      'departments': function() {
-        return [
-          {
-            "Name":"Информационных систем управления",
-            "Id":"1"
-          },
-          {
-            "Name":"Вычислительной математики",
-            "Id":"2"
-          },
-          {
-            "Name":"Многопроцессорных систем и сетей",
-            "Id":"3"
-          }
-        ];
+      'departments': function(DepResource) {
+        return DepResource.get().$promise;
       }
     }
   });
@@ -173,44 +121,14 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
     controller: 'GrItemController',
     resolve: {
       'addMode': function() { return false; },
-      'gr': function() {
-        return {
-          "Name":"Группа 2",
-          "DepartmentId":"2",
-          "SpecialtyId":"2"
-        };
+      'gr': function($route, GrResource) {
+        return GrResource.get({id: $route.current.params.id}).$promise;
       },
-      'specialities': function () {
-        return [
-          {
-            "Name":"Прикладная математика",
-            "Id":"1"
-          },
-          {
-            "Name":"Информатика",
-            "Id":"2"
-          },
-          {
-            "Name":"Прикладная информатика",
-            "Id":"3"
-          }
-        ];
+      'specialities': function(SpecResource) {
+        return SpecResource.get().$promise;
       },
-      'departments': function() {
-        return [
-          {
-            "Name":"Информационных систем управления",
-            "Id":"1"
-          },
-          {
-            "Name":"Вычислительной математики",
-            "Id":"2"
-          },
-          {
-            "Name":"Многопроцессорных систем и сетей",
-            "Id":"3"
-          }
-        ];
+      'departments': function(DepResource) {
+        return DepResource.get().$promise;
       }
     }
   });

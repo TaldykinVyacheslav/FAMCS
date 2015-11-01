@@ -12,7 +12,7 @@
       <div class="form-group">
         <label for="nameInput" class="control-label col-sm-2">Название</label>
         <div class="col-sm-10">
-          <input type="text" id="nameInput" class="form-control" ng-value="gr.Name" placeholder="Имя группы"/>
+          <input type="text" id="nameInput" class="form-control" ng-model="gr.Name" placeholder="Имя группы"/>
         </div>
       </div>
 
@@ -28,7 +28,7 @@
       <div class="form-group">
         <label for="specInput" class="control-label col-sm-2">Специальность</label>
         <div class="col-sm-10">
-          <select id="specInput" class="form-control" ng-options="spec.Id as spec.Name for spec in specialities" ng-model="gr.SpecialityId" >
+          <select id="specInput" class="form-control" ng-options="spec.Id as spec.Name for spec in specialities" ng-model="gr.SpecialtyId" >
             <option value="">Имя специальности</option>
           </select>
         </div>
