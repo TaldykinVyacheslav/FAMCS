@@ -43,7 +43,8 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
       'spec': function() {
         return {
           "Name":"",
-          "Description": ""
+          "Description": "",
+          "FacultyId":"1"
         };
       }
     }
@@ -76,67 +77,23 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
     templateUrl: 'dep.html',
     controller: 'DepController',
     resolve: {
-      'departments': function() {
-        return [
-          {
-            "Name":"Информационных систем управления",
-            "FacultyId":"1"
-          },
-          {
-            "Name":"Вычислительной математики",
-            "FacultyId":"1"
-          },
-          {
-            "Name":"Многопроцессорных систем и сетей",
-            "FacultyId":"1"
-          }
-        ];
+      'departments': function(DepResource) {
+        return DepResource.get().$promise;
       }
     }
   });
 
-  $routeProvider.when('/groups/add', {
-    templateUrl: 'gr-item.html',
-    controller: 'GrItemController',
+  $routeProvider.when('/departments/add', {
+    templateUrl: 'dep-item.html',
+    controller: 'DepItemController',
     resolve: {
       'addMode': function() { return true; },
-      'gr': function() {
+      'dep': function(DepResource) {
         return {
+          "FacultyId":"1",
           "Name":"",
           "Description": ""
         };
-      },
-      'specialities': function () {
-        return [
-          {
-            "Name":"Прикладная математика",
-            "Id":"1"
-          },
-          {
-            "Name":"Информатика",
-            "Id":"2"
-          },
-          {
-            "Name":"Прикладная информатика",
-            "Id":"3"
-          }
-        ];
-      },
-      'departments': function() {
-        return [
-          {
-            "Name":"Информационных систем управления",
-            "Id":"1"
-          },
-          {
-            "Name":"Вычислительной математики",
-            "Id":"2"
-          },
-          {
-            "Name":"Многопроцессорных систем и сетей",
-            "Id":"3"
-          }
-        ];
       }
     }
   });
@@ -146,20 +103,8 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
     controller: 'DepItemController',
     resolve: {
       'addMode': function() { return false; },
-      'dep': function() {
-        return {
-          "Name":"Информационных систем управления",
-          "Description": "Дата образования: март 1971 г.\n\n" +
-          "Преподавательский состав: 3 профессора (доктора наук), " +
-          "8 доцентов (кандидаты наук), 6 старших преподавателей и 3 ассистента.\n\n" +
-          "Заведующий кафедрой — КРАСНОПРОШИН Виктор Владимирович, профессор," +
-          "доктор технических наук.\n\n" +
-          "На кафедре подготовлено 3 доктора и более 50 кандидатов наук. " +
-          "Среди них  представители различных стран: Афганистана, Болгарии, " +
-          "Венгрии, Вьетнама, Германии, Иордании, Китая, Кубы, Польши, Сирии и стран СНГ.\n\n" +
-          "Сотрудники кафедры проходили научные стажировки в ведущих университетах Болгарии, " +
-          "Венгрии, Германии, Испании, Норвегии, США, Финляндии, Франции."
-        };
+      'dep': function($route, DepResource) {
+        return DepResource.get({id: $route.current.params.id}).$promise;
       }
     }
   });
@@ -209,7 +154,8 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
         return {
           "Name":"",
           "DepartmentId":"",
-          "SpecialtyId":""
+          "SpecialtyId":"",
+          "FacultyId":"1"
         };
       },
       'specialities': function () {
@@ -398,6 +344,62 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
             "FirstName":"Александр",
             "LastName":"Полторацкий",
             "Email":"alex@mail.com"
+          }
+        ];
+      },
+      'specialities': function () {
+        return [
+          {
+            "Name":"Прикладная математика",
+            "Id":"1"
+          },
+          {
+            "Name":"Информатика",
+            "Id":"2"
+          },
+          {
+            "Name":"Прикладная информатика",
+            "Id":"3"
+          }
+        ];
+      },
+      'departments': function() {
+        return [
+          {
+            "Name":"Информационных систем управления",
+            "Id":"1"
+          },
+          {
+            "Name":"Вычислительной математики",
+            "Id":"2"
+          },
+          {
+            "Name":"Многопроцессорных систем и сетей",
+            "Id":"3"
+          }
+        ];
+      },
+      'groups': function() {
+        return [
+          {
+            "Name": "1",
+            "Id": "1"
+          },
+          {
+            "Name": "2",
+            "Id": "2"
+          },
+          {
+            "Name": "3",
+            "Id": "3"
+          },
+          {
+            "Name": "4",
+            "Id": "4"
+          },
+          {
+            "Name": "5",
+            "Id": "5"
           }
         ];
       }

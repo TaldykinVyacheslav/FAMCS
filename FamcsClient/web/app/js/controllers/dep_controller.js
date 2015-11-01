@@ -5,6 +5,6 @@
 angular.module("app").controller('DepController',[
   '$scope', 'departments',
   function($scope, departments) {
-    $scope.departments = departments;
+    $scope.departments = departments.Result;
   }
 ]);

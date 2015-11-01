@@ -5,6 +5,39 @@
     </div>
   </div>
 
+  <div class="row filter-panel">
+      <form class="form-inline filter-form">
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon">Группа</div>
+            <select id="grInput" class="form-control" ng-options="gr.Id as gr.Name for gr in groups" ng-model="stud.GroupId">
+              <option value="">Имя группы</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon">Кафедра</div>
+            <select id="depInput" class="form-control col-sm-9" ng-options="dep.Id as dep.Name for dep in departments" ng-model="stud.DepartmentId">
+              <option value="">Имя кафедры</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon">Специальность</div>
+            <select id="specInput" class="form-control col-sm-9" ng-options="spec.Id as spec.Name for spec in specialities" ng-model="stud.SpecialityId">
+              <option value="">Имя специальности</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Найти</button>
+      </form>
+
+  </div>
+
+  <hr/>
+
   <table class="table">
     <tr>
       <th>#</th>

@@ -7,7 +7,7 @@
 
   <div class="panel panel-default" ng-repeat="dep in departments">
     <div class="panel-body">
-      <a ng-href="departments/{{$index}}">
+      <a ng-href="departments/{{dep.Id}}">
         {{dep.Name}}
         <i class="pull-right glyphicon glyphicon-chevron-right"></i>
       </a>

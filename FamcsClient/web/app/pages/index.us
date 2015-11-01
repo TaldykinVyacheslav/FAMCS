@@ -29,14 +29,12 @@
           <h4 class="navbar-title visible-xs text-center"><strong>{{ getTitle() }}</strong></h4>
         </div>
 
-
-
         <!-- Desktop navigation -->
         <nav class="hidden-xs">
           <ul class="nav navbar-nav">
             <li><a href="home">О факультете</a></li>
-            <li><a href="specialities">Специальности</a></li>
             <li><a href="departments">Кафедры</a></li>
+            <li><a href="specialities">Специальности</a></li>
             <li><a href="groups">Группы</a></li>
             <li><a href="students">Студенты</a></li>
           </ul>
@@ -51,8 +49,8 @@
         <nav class="visible-xs" collapse="isCollapsed" ng-click="isCollapsed = !isCollapsed">
           <ul class="nav navbar-nav">
             <li><a href="home">О факультете</a></li>
-            <li><a href="specialities">Специальности</a></li>
             <li><a href="departments">Кафедры</a></li>
+            <li><a href="specialities">Специальности</a></li>
             <li><a href="groups">Группы</a></li>
             <li><a href="students">Студенты</a></li>
             <li>

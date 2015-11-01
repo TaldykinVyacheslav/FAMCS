@@ -3,9 +3,12 @@
  */
 
 angular.module("app").controller('StudController',
-  ['$scope', 'students',
-    function($scope, students) {
+  ['$scope', 'students', 'specialities', 'departments', 'groups',
+    function($scope, students, specialities, departments, groups) {
       $scope.students = students;
+      $scope.groups = groups;
+      $scope.departments = departments;
+      $scope.specialities = specialities;
     }
   ]
 );
