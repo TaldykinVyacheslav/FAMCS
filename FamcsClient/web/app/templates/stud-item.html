@@ -1,0 +1,74 @@
+<div id="stud-item">
+  <div class="title row">
+    <div class="col-sm-12">
+      <h4 ng-show="addMode">Добавить студента</h4>
+      <h4 ng-hide="addMode">Изменить студента</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <form class="form-horizontal">
+
+      <div class="form-group">
+        <label for="fNameInput" class="control-label col-sm-2">Имя</label>
+        <div class="col-sm-10">
+          <input type="text" id="fNameInput" class="form-control" ng-value="stud.FirstName"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="lNameInput" class="control-label col-sm-2">Фамилия</label>
+        <div class="col-sm-10">
+          <input type="text" id="lNameInput" class="form-control" ng-value="stud.LastName"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="emailInput" class="control-label col-sm-2">Фамилия</label>
+        <div class="col-sm-10">
+          <input type="email" id="emailInput" class="form-control" ng-value="stud.Email"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="grInput" class="control-label col-sm-2">Группа</label>
+        <div class="col-sm-10">
+          <select id="grInput" class="form-control" ng-options="gr.Id as gr.Name for gr in groups" ng-model="stud.GroupId">
+            <option value="">Имя группы</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="depInput" class="control-label col-sm-2">Кафедра</label>
+        <div class="col-sm-10">
+          <select id="depInput" class="form-control" ng-options="dep.Id as dep.Name for dep in departments" ng-model="stud.DepartmentId" disabled>
+            <option value="">Имя кафедры</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="specInput" class="control-label col-sm-2">Специальность</label>
+        <div class="col-sm-10">
+          <select id="specInput" class="form-control" ng-options="spec.Id as spec.Name for spec in specialities" ng-model="stud.SpecialityId" disabled>
+            <option value="">Имя специальности</option>
+          </select>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+
+  <div class="row pull-right">
+    <div class="col-sm-12">
+      <button type="button" class="btn btn-default" ng-click="cancel()">
+        Отмена
+      </button>
+      <button type="button" class="btn btn-success" ng-click="save()">
+        Сохранить
+      </button>
+    </div>
+  </div>
+</div>

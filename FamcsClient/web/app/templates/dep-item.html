@@ -1,10 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title></title>
-</head>
-<body>
+<div id="dep-item">
+  <div class="title row">
+    <div class="col-sm-12">
+      <h4 ng-show="addMode">Добавить кафедру</h4>
+      <h4 ng-hide="addMode">Изменить кафедру</h4>
+    </div>
+  </div>
 
-</body>
-</html>
+  <div class="row">
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label for="nameInput" class="control-label col-sm-2">Название</label>
+        <div class="col-sm-10">
+          <input type="text" id="nameInput" class="form-control" ng-value="dep.Name"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="descInput" class="control-label col-sm-2">Описание</label>
+        <div class="col-sm-10">
+          <textarea id="descInput" class="form-control desc" >{{dep.Description}}</textarea>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+
+  <div class="row pull-right">
+    <div class="col-sm-12">
+      <button type="button" class="btn btn-default" ng-click="cancel()">
+        Отмена
+      </button>
+      <button type="button" class="btn btn-success" ng-click="save()">
+        Сохранить
+      </button>
+    </div>
+  </div>
+</div>

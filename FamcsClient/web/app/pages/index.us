@@ -37,6 +37,7 @@
             <li><a href="home">О факультете</a></li>
             <li><a href="specialities">Специальности</a></li>
             <li><a href="departments">Кафедры</a></li>
+            <li><a href="groups">Группы</a></li>
             <li><a href="students">Студенты</a></li>
           </ul>
 
@@ -52,6 +53,7 @@
             <li><a href="home">О факультете</a></li>
             <li><a href="specialities">Специальности</a></li>
             <li><a href="departments">Кафедры</a></li>
+            <li><a href="groups">Группы</a></li>
             <li><a href="students">Студенты</a></li>
             <li>
               <a href="#" ng-click="logout()">

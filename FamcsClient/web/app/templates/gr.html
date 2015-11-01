@@ -1,14 +1,14 @@
-<div id="departments">
+<div id="groups">
   <div class="title row">
     <div class="col-sm-12">
-      <h4>Кафедры</h4>
+      <h4>Группы</h4>
     </div>
   </div>
 
-  <div class="panel panel-default" ng-repeat="dep in departments">
+  <div class="panel panel-default" ng-repeat="gr in groups">
     <div class="panel-body">
-      <a ng-href="departments/{{$index}}">
-        {{dep.Name}}
+      <a ng-href="groups/{{$index}}">
+        {{gr.Name}}
         <i class="pull-right glyphicon glyphicon-chevron-right"></i>
       </a>
     </div>
@@ -16,8 +16,8 @@
 
   <div class="row pull-right">
     <div class="col-sm-12">
-      <a href="departments/add" type="button" class="btn btn-success">
-        Добавить Кафедру&nbsp;&nbsp;
+      <a href="groups/add" type="button" class="btn btn-success">
+        Добавить Группу&nbsp;&nbsp;
         <i class="pull-right glyphicon glyphicon-plus"></i>
       </a>
     </div>
