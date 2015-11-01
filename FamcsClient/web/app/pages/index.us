@@ -42,7 +42,7 @@
 
           <ul class="nav navbar-nav navbar-right">
             <li><p class="username">{{ currentUser.username }}</p></li>
-            <li><a href="#" ng-click="logout()" title="Log out"><span class="glyphicon glyphicon-log-out"></span></a></li>
+            <li><a href="#" ng-click="logout()" title="Выйти">Выйти <span class="glyphicon glyphicon-log-out"></span></a></li>
           </ul>
         </nav>
 
@@ -55,7 +55,7 @@
             <li><a href="students">Студенты</a></li>
             <li>
               <a href="#" ng-click="logout()">
-                <span class="glyphicon glyphicon-log-out"></span> Выйти [{{ currentUser.username }}]</a>
+                <span class="glyphicon glyphicon-log-out"></span> Выйти [{{ currentUser.UserName }}]</a>
             </li>
           </ul>
         </nav>

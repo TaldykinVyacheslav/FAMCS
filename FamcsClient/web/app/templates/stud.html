@@ -1,0 +1,33 @@
+<div id="students">
+  <div class="title row">
+    <div class="col-sm-12">
+      <h4>Студенты</h4>
+    </div>
+  </div>
+
+  <table class="table">
+    <tr>
+      <th>#</th>
+      <th>Имя</th>
+      <th>Фамилия</th>
+      <th>E-mail</th>
+      <th></th>
+    </tr>
+    <tr ng-repeat="stud in students">
+      <td>{{$index}}</td>
+      <td>{{stud.FirstName}}</td>
+      <td>{{stud.LastName}}</td>
+      <td>{{stud.Email}}</td>
+      <td><a ng-href="students/{{$index + 1}}">Подробнее</a></td>
+    </tr>
+  </table>
+
+  <div class="row pull-right">
+    <div class="col-sm-12">
+      <a href="students/add" type="button" class="btn btn-success">
+        Добавить студента&nbsp;&nbsp;
+        <i class="pull-right glyphicon glyphicon-plus"></i>
+      </a>
+    </div>
+  </div>
+</div>

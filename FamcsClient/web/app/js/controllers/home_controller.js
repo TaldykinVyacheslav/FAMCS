@@ -6,11 +6,8 @@
  */
 
 angular.module("app").controller('HomeController',
-    ['$scope', '$location', '$interval', 'AuthenticationService', 'DateService', 'SynchroResource',
-      'settings', 'lastSyncReport', 'syncStatus',
-      function($scope, $location, $interval, AuthenticationService, DateService, SynchroResource,
-               settings, lastSyncReport, syncStatus)
-{
+    ['$scope',
+function($scope) {
   $scope.logout = function () {
     $scope.isCollapsed = true;
     AuthenticationService.logout();

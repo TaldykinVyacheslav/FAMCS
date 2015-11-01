@@ -13,31 +13,14 @@
     </div>
   </div>
 
-  <div class="panel panel-default">
+  <div class="panel panel-default" ng-repeat="dep in departments">
     <div class="panel-body">
-      <a href="PM">
-        Информационных систем управления
+      <a ng-href="{{$index}}">
+        {{dep.Name}}
         <i class="pull-right glyphicon glyphicon-chevron-right"></i>
       </a>
     </div>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <a href="PM">
-        Информационных систем управления
-        <i class="pull-right glyphicon glyphicon-chevron-right"></i>
-      </a>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <a href="PM">
-        Информационных систем управления
-        <i class="pull-right glyphicon glyphicon-chevron-right"></i>
-      </a>
-    </div>
-  </div>
-
 
   <div class="row pull-right">
     <div class="col-sm-12">

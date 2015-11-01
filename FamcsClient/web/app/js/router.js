@@ -14,8 +14,8 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
 
 
   $routeProvider.when('/specialities/add', {
-    templateUrl: 'spec-add.html',
-    controller: 'SpecAddController'
+    templateUrl: 'spec-item.html',
+    controller: 'SpecItemController'
   });
 
   $routeProvider.when('/specialities', {
@@ -63,6 +63,44 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
       }
     }
   });
+
+  $routeProvider.when('/students', {
+    templateUrl: 'stud.html',
+    controller: 'StudController',
+    resolve: {
+      'students': function() {
+        return [
+          {
+            "FirstName":"Вячеслав",
+            "LastName":"Талдыкин",
+            "Email":"slava@mail.com"
+          },
+          {
+            "FirstName":"Томас",
+            "LastName":"Блажукас",
+            "Email":"tomas@mail.com"
+          },
+          {
+            "FirstName":"Игнат",
+            "LastName":"Климчук",
+            "Email":"ignat@mail.com"
+          },
+          {
+            "FirstName":"Павел",
+            "LastName":"Савик",
+            "Email":"ignat@mail.com"
+          },
+          {
+            "FirstName":"Александр",
+            "LastName":"Полторацкий",
+            "Email":"ignat@mail.com"
+          }
+        ];
+      }
+    }
+  });
+
+
 
   // todo: implement specific report info page
   /*$routeProvider.when('/history/:id', {
