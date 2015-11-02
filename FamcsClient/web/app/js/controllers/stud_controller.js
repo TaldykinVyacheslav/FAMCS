@@ -6,6 +6,7 @@ angular.module("app").controller('StudController',
   ['$scope', 'StudResource', 'SpecResource', 'DepResource', 'students', 'specialities', 'departments', 'groups',
     function($scope, StudResource, SpecResource, DepResource, students, specialities, departments, groups) {
       $scope.students = students.Result.slice(8, students.Result.length);
+      $scope.students.splice(6,1);
       $scope.groups = groups.Result;
       $scope.specialities = specialities.Result;
       $scope.departments = departments.Result.slice(0, departments.Result.length - 1);

@@ -30,6 +30,10 @@ angular.module("app").factory('AuthenticationService', ['Base64Service', '$rootS
   var addLoginHandler = function(handler) {
     _loginHandlers.push(handler);
   };
+
+  addLoginHandler(function() {
+    $rootScope.adminMode = (_credentials.username === "admin");
+  });
   var login = function (credentials) {
     _credentials = credentials;
     //$http.defaults.headers.common['Authorization'] = 'Basic ' + Base64Service.encode(credentials.username + ':' + credentials.password);

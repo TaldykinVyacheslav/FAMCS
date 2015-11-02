@@ -2,7 +2,8 @@
   <div class="title row">
     <div class="col-sm-12">
       <h4 ng-show="addMode">Добавить студента</h4>
-      <h4 ng-hide="addMode">Изменить студента</h4>
+      <h4 ng-show="!addMode && adminMode">Изменить студента</h4>
+      <h4 ng-show="!addMode && !adminMode">Просмотр студента</h4>
     </div>
   </div>
 
@@ -12,28 +13,28 @@
       <div class="form-group">
         <label for="fNameInput" class="control-label col-sm-2">Имя</label>
         <div class="col-sm-10">
-          <input type="text" id="fNameInput" class="form-control" ng-model="stud.FirstName"/>
+          <input type="text" id="fNameInput" class="form-control" ng-model="stud.FirstName" ng-readonly="!adminMode"/>
         </div>
       </div>
 
       <div class="form-group">
         <label for="lNameInput" class="control-label col-sm-2">Фамилия</label>
         <div class="col-sm-10">
-          <input type="text" id="lNameInput" class="form-control" ng-model="stud.LastName"/>
+          <input type="text" id="lNameInput" class="form-control" ng-model="stud.LastName" ng-readonly="!adminMode"/>
         </div>
       </div>
 
       <div class="form-group" ng-show="addMode">
         <label for="passInput" class="control-label col-sm-2">Пароль</label>
         <div class="col-sm-10">
-          <input type="password" id="passInput" class="form-control" ng-model="stud.Password"/>
+          <input type="password" id="passInput" class="form-control" ng-model="stud.Password" ng-readonly="!adminMode"/>
         </div>
       </div>
 
       <div class="form-group">
         <label for="grInput" class="control-label col-sm-2">Группа</label>
         <div class="col-sm-10">
-          <select id="grInput" class="form-control" ng-options="gr as gr.Name for gr in groups" ng-model="studGroup">
+          <select id="grInput" class="form-control" ng-options="gr as gr.Name for gr in groups" ng-model="studGroup" ng-disabled="!adminMode">
             <option value="">Имя группы</option>
           </select>
         </div>
@@ -61,7 +62,7 @@
   </div>
 
 
-  <div class="row pull-right">
+  <div class="row pull-right" ng-show="adminMode">
     <div class="col-sm-12">
       <button type="button" class="btn btn-default" ng-click="cancel()">
         Отмена
