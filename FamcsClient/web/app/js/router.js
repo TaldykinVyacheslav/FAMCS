@@ -133,168 +133,21 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
     }
   });
 
-  $routeProvider.when('/students/:id', {
-    templateUrl: 'stud-item.html',
-    controller: 'StudItemController',
-    resolve: {
-      'addMode': function() { return false; },
-      'stud': function() {
-        return {
-          "FirstName": "Александр",
-          "LastName": "Полторацкий",
-          "Email": "alex@mail.com",
-          "GroupId": "2",
-          "DepartmentId": "1",
-          "SpecialityId": "3"
-        };
-      },
-      'specialities': function () {
-        return [
-          {
-            "Name":"Прикладная математика",
-            "Id":"1"
-          },
-          {
-            "Name":"Информатика",
-            "Id":"2"
-          },
-          {
-            "Name":"Прикладная информатика",
-            "Id":"3"
-          }
-        ];
-      },
-      'departments': function() {
-        return [
-          {
-            "Name":"Информационных систем управления",
-            "Id":"1"
-          },
-          {
-            "Name":"Вычислительной математики",
-            "Id":"2"
-          },
-          {
-            "Name":"Многопроцессорных систем и сетей",
-            "Id":"3"
-          }
-        ];
-      },
-      'groups': function() {
-        return [
-          {
-            "Name": "1",
-            "Id": "1"
-          },
-          {
-            "Name": "2",
-            "Id": "2"
-          },
-          {
-            "Name": "3",
-            "Id": "3"
-          },
-          {
-            "Name": "4",
-            "Id": "4"
-          },
-          {
-            "Name": "5",
-            "Id": "5"
-          }
-        ];
-      }
-    }
-  });
-
   $routeProvider.when('/students', {
     templateUrl: 'stud.html',
     controller: 'StudController',
     resolve: {
-      'students': function() {
-        return [
-          {
-            "FirstName":"Вячеслав",
-            "LastName":"Талдыкин",
-            "Email":"slava@mail.com"
-          },
-          {
-            "FirstName":"Томас",
-            "LastName":"Блажукас",
-            "Email":"tomas@mail.com"
-          },
-          {
-            "FirstName":"Игнат",
-            "LastName":"Климчук",
-            "Email":"ignat@mail.com"
-          },
-          {
-            "FirstName":"Павел",
-            "LastName":"Савик",
-            "Email":"pavel@mail.com"
-          },
-          {
-            "FirstName":"Александр",
-            "LastName":"Полторацкий",
-            "Email":"alex@mail.com"
-          }
-        ];
+      'students': function(StudResource) {
+        return StudResource.get().$promise;
       },
-      'specialities': function () {
-        return [
-          {
-            "Name":"Прикладная математика",
-            "Id":"1"
-          },
-          {
-            "Name":"Информатика",
-            "Id":"2"
-          },
-          {
-            "Name":"Прикладная информатика",
-            "Id":"3"
-          }
-        ];
+      'specialities': function(SpecResource) {
+        return SpecResource.get().$promise;
       },
-      'departments': function() {
-        return [
-          {
-            "Name":"Информационных систем управления",
-            "Id":"1"
-          },
-          {
-            "Name":"Вычислительной математики",
-            "Id":"2"
-          },
-          {
-            "Name":"Многопроцессорных систем и сетей",
-            "Id":"3"
-          }
-        ];
+      'departments': function(DepResource) {
+        return DepResource.get().$promise;
       },
-      'groups': function() {
-        return [
-          {
-            "Name": "1",
-            "Id": "1"
-          },
-          {
-            "Name": "2",
-            "Id": "2"
-          },
-          {
-            "Name": "3",
-            "Id": "3"
-          },
-          {
-            "Name": "4",
-            "Id": "4"
-          },
-          {
-            "Name": "5",
-            "Id": "5"
-          }
-        ];
+      'groups': function (GrResource) {
+        return GrResource.get().$promise;
       }
     }
   });
@@ -306,65 +159,19 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
       'addMode': function() { return true; },
       'stud': function() {
         return {
-          "Name":"",
-          "Description": ""
+          "FirstName": "",
+          "LastName": "",
+          "Password": ""
         };
       },
-      'specialities': function () {
-        return [
-          {
-            "Name":"Прикладная математика",
-            "Id":"1"
-          },
-          {
-            "Name":"Информатика",
-            "Id":"2"
-          },
-          {
-            "Name":"Прикладная информатика",
-            "Id":"3"
-          }
-        ];
+      'specialities': function(SpecResource) {
+        return SpecResource.get().$promise;
       },
-      'departments': function() {
-        return [
-          {
-            "Name":"Информационных систем управления",
-            "Id":"1"
-          },
-          {
-            "Name":"Вычислительной математики",
-            "Id":"2"
-          },
-          {
-            "Name":"Многопроцессорных систем и сетей",
-            "Id":"3"
-          }
-        ];
+      'departments': function(DepResource) {
+        return DepResource.get().$promise;
       },
-      'groups': function() {
-        return [
-          {
-            "Name": "1",
-            "Id": "1"
-          },
-          {
-            "Name": "2",
-            "Id": "2"
-          },
-          {
-            "Name": "3",
-            "Id": "3"
-          },
-          {
-            "Name": "4",
-            "Id": "4"
-          },
-          {
-            "Name": "5",
-            "Id": "5"
-          }
-        ];
+      'groups': function (GrResource) {
+        return GrResource.get().$promise;
       }
     }
   });
@@ -374,71 +181,17 @@ angular.module("app").config(function($routeProvider, $locationProvider, $httpPr
     controller: 'StudItemController',
     resolve: {
       'addMode': function() { return false; },
-      'stud': function() {
-        return {
-          "FirstName": "Александр",
-          "LastName": "Полторацкий",
-          "Email": "alex@mail.com",
-          "GroupId": "2",
-          "DepartmentId": "1",
-          "SpecialityId": "3"
-        };
+      'stud': function($route, StudResource) {
+        return StudResource.get({id: $route.current.params.id}).$promise;
       },
-      'specialities': function () {
-        return [
-          {
-            "Name":"Прикладная математика",
-            "Id":"1"
-          },
-          {
-            "Name":"Информатика",
-            "Id":"2"
-          },
-          {
-            "Name":"Прикладная информатика",
-            "Id":"3"
-          }
-        ];
+      'specialities': function(SpecResource) {
+        return SpecResource.get().$promise;
       },
-      'departments': function() {
-        return [
-          {
-            "Name":"Информационных систем управления",
-            "Id":"1"
-          },
-          {
-            "Name":"Вычислительной математики",
-            "Id":"2"
-          },
-          {
-            "Name":"Многопроцессорных систем и сетей",
-            "Id":"3"
-          }
-        ];
+      'departments': function(DepResource) {
+        return DepResource.get().$promise;
       },
-      'groups': function() {
-        return [
-          {
-            "Name": "1",
-            "Id": "1"
-          },
-          {
-            "Name": "2",
-            "Id": "2"
-          },
-          {
-            "Name": "3",
-            "Id": "3"
-          },
-          {
-            "Name": "4",
-            "Id": "4"
-          },
-          {
-            "Name": "5",
-            "Id": "5"
-          }
-        ];
+      'groups': function (GrResource) {
+        return GrResource.get().$promise;
       }
     }
   });

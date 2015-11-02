@@ -8,7 +8,7 @@ angular.module("app").controller('GrItemController',[
     $scope.addMode = addMode;
     $scope.gr = addMode ? gr : gr.Result;
     $scope.specialities = specialities.Result;
-    $scope.departments = departments.Result.slice(0, departments.Result.length - 1);;
+    $scope.departments = departments.Result.slice(0, departments.Result.length - 1);
 
     $scope.save = function() {
       GrResource.create($scope.gr).$promise.then(function() {
